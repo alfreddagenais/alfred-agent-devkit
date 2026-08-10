@@ -1,0 +1,32 @@
+name: Idea / recommendation
+description: Suggest an improvement, trim, or new package direction
+title: "[idea] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: Half-formed thoughts are welcome.
+  - type: textarea
+    id: idea
+    attributes:
+      label: Idea
+      description: What should change, and why?
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - CLI
+        - Presets / packages
+        - Docs / onboarding
+        - Adapters (Cursor / Claude / …)
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Extra context
+      description: Screenshots, links, or “I would use this when…”

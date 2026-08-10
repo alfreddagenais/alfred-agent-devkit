@@ -4,23 +4,41 @@ import { packagesDir } from '../paths.js'
 
 /**
  * Lightweight Claude Code mapping (v0.1).
- * Skills → .claude/skills/<id>/SKILL.md
+ * Skills → .claude/skills/<id>/SKILL.md (+ optional command)
  * Agents/commands → .claude/agents or commands when content exists
  */
 export function planClaudeWrites(packageId, manifest, targetRoot) {
   const contentDir = path.join(packagesDir, packageId, 'content')
   const ops = []
 
-  const pushIfExists = (relSource, dest) => {
+  const pushIfExists = (relSource, dest, note) => {
     const from = path.join(contentDir, relSource)
     if (fs.existsSync(from)) {
-      ops.push({ from, to: path.join(targetRoot, dest), kind: 'file', packageId })
+      const op = { from, to: path.join(targetRoot, dest), kind: 'file', packageId }
+      if (note) op.note = note
+      ops.push(op)
+    }
+  }
+
+  const pushStarterIfMissing = (relSource, dest, note) => {
+    const from = path.join(contentDir, relSource)
+    const to = path.join(targetRoot, dest)
+    if (fs.existsSync(from) && !fs.existsSync(to)) {
+      ops.push({
+        from,
+        to,
+        kind: 'file',
+        packageId,
+        note: note || `${path.basename(dest)} starter (only written when missing)`,
+      })
     }
   }
 
   switch (manifest.type) {
     case 'skill':
       pushIfExists('SKILL.md', path.join('.claude', 'skills', packageId, 'SKILL.md'))
+      pushIfExists('reference.md', path.join('.claude', 'skills', packageId, 'reference.md'))
+      pushIfExists('command.md', path.join('.claude', 'commands', `${packageId}.md`))
       break
     case 'agent':
       pushIfExists('agent.md', path.join('.claude', 'agents', `${packageId}.md`))
@@ -32,19 +50,7 @@ export function planClaudeWrites(packageId, manifest, targetRoot) {
       // Claude has no .mdc rules; skip for now (Cursor remains primary)
       break
     case 'template':
-      {
-        const starter = path.join(contentDir, 'CLAUDE.md.starter')
-        const claudeMd = path.join(targetRoot, 'CLAUDE.md')
-        if (fs.existsSync(starter) && !fs.existsSync(claudeMd)) {
-          ops.push({
-            from: starter,
-            to: claudeMd,
-            kind: 'file',
-            packageId,
-            note: 'CLAUDE.md starter (only written when missing)',
-          })
-        }
-      }
+      pushStarterIfMissing('CLAUDE.md.starter', 'CLAUDE.md', 'CLAUDE.md starter (only written when missing)')
       break
     default:
       break

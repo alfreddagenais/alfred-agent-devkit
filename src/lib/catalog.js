@@ -25,6 +25,18 @@ export function listPresets() {
     .filter((m) => m.type === 'preset')
 }
 
+export function listPackages() {
+  return listPackageIds()
+    .map((id) => loadManifest(id))
+    .filter((m) => m.type !== 'preset')
+}
+
+/** Resolve package ids from preset ids and/or direct package ids. */
+export function resolvePackageIds({ presets = [], packages = [] } = {}) {
+  const fromPresets = presets.length ? expandPresetIncludes(presets) : []
+  return [...new Set([...fromPresets, ...packages])]
+}
+
 export function expandPresetIncludes(presetIds) {
   const resolved = new Set()
   const queue = [...presetIds]

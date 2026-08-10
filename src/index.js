@@ -1,6 +1,9 @@
 import { Command } from 'commander'
 import { createRequire } from 'node:module'
 import { initCommand } from './commands/init.js'
+import { doctorCommand } from './commands/doctor.js'
+import { statusCommand } from './commands/status.js'
+import { removeCommand } from './commands/remove.js'
 
 const require = createRequire(import.meta.url)
 const pkg = require('../package.json')
@@ -17,6 +20,7 @@ export async function run(argv) {
     .command('init')
     .description('Interactively install presets into .cursor/ / .claude/ / …')
     .option('-y, --yes', 'Accept defaults (Cursor + Core + Code Review)', false)
+    .option('--advanced', 'Pick packages individually and control overwrites', false)
     .option('--cwd <path>', 'Target project directory', process.cwd())
     .option('--dry-run', 'Show planned writes without writing files', false)
     .action(async (options) => {
@@ -29,6 +33,33 @@ export async function run(argv) {
     .action(async () => {
       const { listCatalog } = await import('./lib/catalog.js')
       listCatalog()
+    })
+
+  program
+    .command('status')
+    .description('Show what this kit installed in a project')
+    .option('--cwd <path>', 'Target project directory', process.cwd())
+    .action(async (options) => {
+      await statusCommand(options)
+    })
+
+  program
+    .command('doctor')
+    .description('Check install health, missing files, and context stubs')
+    .option('--cwd <path>', 'Target project directory', process.cwd())
+    .action(async (options) => {
+      await doctorCommand(options)
+    })
+
+  program
+    .command('remove')
+    .description('Remove installed presets or packages (asks before deleting)')
+    .argument('[packages...]', 'Preset or package ids to remove')
+    .option('-y, --yes', 'Skip confirmation', false)
+    .option('--cwd <path>', 'Target project directory', process.cwd())
+    .option('--dry-run', 'Show planned removals without deleting', false)
+    .action(async (packages, options) => {
+      await removeCommand(packages, options)
     })
 
   await program.parseAsync(argv)

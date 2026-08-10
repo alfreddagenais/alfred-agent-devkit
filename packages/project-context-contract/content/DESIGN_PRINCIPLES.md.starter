@@ -1,0 +1,49 @@
+# Design Principles
+
+UI/UX standards for this project. Agents should read this before visual or copy changes.
+
+## Product feel
+
+<!-- 2–4 words or a short sentence: calm, bold, dense, playful, … -->
+
+## Anti-patterns (do not)
+
+- Do not default to generic AI palettes (purple-on-white, purple→indigo glow)
+- Do not wrap everything in cards
+- Do not use Inter / Roboto / Arial / system UI as the expressive display face when brand type exists
+- Do not put detached badges or promo chips on hero media
+
+## C.L.E.A.R. checks
+
+| Principle | Check |
+|-----------|-------|
+| **Copy** | Clear, concise, action-oriented |
+| **Layout** | Logical flow; key actions visible |
+| **Emphasis** | One main action per section |
+| **Accessibility** | Keyboard, contrast, usable targets |
+| **Reward** | Feedback on every important action |
+
+## Typography
+
+| Role | Font / notes |
+|------|----------------|
+| Display | |
+| Body | |
+| Mono | |
+
+## Color
+
+| Token | Value | Use |
+|-------|-------|-----|
+| Background | | |
+| Text | | |
+| Accent | | |
+
+## Motion
+
+- Prefer `transform` and `opacity`
+- Avoid bounce / elastic easing unless brand-defining
+
+## Components
+
+<!-- Buttons, forms, empty states, tables: project-specific rules -->

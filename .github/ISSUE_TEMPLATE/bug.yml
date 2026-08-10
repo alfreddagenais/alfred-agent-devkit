@@ -1,0 +1,38 @@
+name: Bug
+description: Something broke or behaves unexpectedly
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. Scrub secrets before pasting logs.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you expect vs what you got?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Commands, flags, and a minimal project setup if you have one
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: input
+    id: node
+    attributes:
+      label: Node version
+      placeholder: "24.x"
+  - type: textarea
+    id: doctor
+    attributes:
+      label: Doctor output (optional)
+      description: Paste `npx alfred-agent-devkit doctor` if relevant
+      render: text

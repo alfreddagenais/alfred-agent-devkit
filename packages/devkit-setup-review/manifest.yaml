@@ -1,0 +1,25 @@
+id: devkit-setup-review
+name: Devkit Setup Review
+version: 0.1.0
+type: skill
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+  - claude
+description: >
+  Post-install review of alfred-agent-devkit skills, commands, and project
+  context. Fits the kit to the real repo, suggests removals, and asks before
+  every change. Use after init or when the install feels too heavy.
+tags:
+  - setup
+  - review
+  - onboarding
+  - dx
+origin: null
+publish:
+  strip:
+    - secrets
+    - private-paths
+    - experiments

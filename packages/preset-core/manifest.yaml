@@ -1,6 +1,6 @@
 id: preset-core
 name: Core
-version: 0.1.2
+version: 0.1.3
 type: preset
 status: published
 targets:
@@ -9,8 +9,8 @@ tools:
   - cursor
   - claude
 description: >
-  Baseline installer preset: English rule, orchestration, C.O.A.C.H., and
-  project context contract.
+  Baseline installer preset: English rule, orchestration, C.O.A.C.H.,
+  project context contract, and post-install setup review.
 tags: [preset, core]
 includes:
   - english-code
@@ -18,5 +18,6 @@ includes:
   - coach-clarifying
   - coach-clarifying-rule
   - project-context-contract
+  - devkit-setup-review
 publish:
   strip: [secrets, private-paths, experiments]

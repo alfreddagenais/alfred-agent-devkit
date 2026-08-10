@@ -1,0 +1,45 @@
+# Project Context
+
+Domain and architecture facts for AI assistants. Keep product truth here, not inside shared agent packages.
+
+## Purpose
+
+<!-- What this product is, who it serves, and what it is not -->
+
+## Users and jobs
+
+| User | Job to be done |
+|------|----------------|
+| | |
+
+## Architecture
+
+```text
+<!-- High-level boxes and boundaries -->
+```
+
+## Key domains / modules
+
+| Area | Path or service | Notes |
+|------|-----------------|-------|
+| | | |
+
+## Data and tenancy
+
+<!-- Ownership, multi-tenant rules, soft deletes, PII, retention -->
+
+## Non-negotiables
+
+- <!-- auth, authorization, billing, compliance, i18n, … -->
+
+## Useful commands
+
+Document from the repo root (or point to CLAUDE.md).
+
+```bash
+# lint / test / run
+```
+
+## Out of scope
+
+<!-- Explicit non-goals that prevent scope creep -->

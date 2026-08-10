@@ -1,6 +1,6 @@
 id: project-context-contract
 name: Project Context Contract
-version: 0.1.0
+version: 0.1.1
 type: template
 status: published
 targets:
@@ -10,7 +10,7 @@ tools:
   - claude
 description: >
   Template and contract for per-project AI context files (CLAUDE.md,
-  PROJECT_CONTEXT, DESIGN_PRINCIPLES) that specialized agents must read.
+  PROJECT_CONTEXT, DESIGN_PRINCIPLES), including starters written only when missing.
 tags:
   - context
   - template
