@@ -4,6 +4,8 @@ import { createRequire } from 'node:module'
 import { expandPresetIncludes, listPackages, listPresets } from '../lib/catalog.js'
 import {
   applyInstall,
+  buildFileRecord,
+  classifyOpsForAdopt,
   planInstall,
   readInstallManifest,
   writeInstallManifest,
@@ -34,6 +36,7 @@ export async function initCommand(options) {
   const targetRoot = path.resolve(options.cwd)
   const presets = listPresets()
   const packages = listPackages()
+  const presetFlag = parsePresetFlag(options.presets)
 
   let tools
   let selectedPresets
@@ -41,7 +44,7 @@ export async function initCommand(options) {
 
   if (options.yes) {
     tools = ['cursor']
-    selectedPresets = [...YES_PRESETS]
+    selectedPresets = presetFlag.length ? presetFlag : [...YES_PRESETS]
   } else if (options.advanced) {
     ;({ tools, selectedPresets, selectedPackages } = await runAdvancedPrompts({
       targetRoot,
@@ -54,7 +57,7 @@ export async function initCommand(options) {
     if (!tools) return
   }
 
-  // Simple mode always keeps the core baseline preset.
+  // Simple / yes mode always keeps the core baseline preset.
   // Advanced mode trusts the explicit package checklist.
   if (!options.advanced && !selectedPresets.includes('preset-core')) {
     selectedPresets = ['preset-core', ...selectedPresets]
@@ -69,10 +72,26 @@ export async function initCommand(options) {
 
   annotateOps(ops)
 
+  const adoptMode = Boolean(options.skipExisting)
+  let managedRecords = []
+  let overrideRecords = []
+
+  if (adoptMode) {
+    const classified = classifyOpsForAdopt(ops, targetRoot)
+    managedRecords = classified.managed
+    overrideRecords = classified.overrides
+  }
+
   console.log(`\nPlanning ${ops.length} file(s) from ${packageIds.length} package(s)…`)
+  if (adoptMode) {
+    console.log('Mode: skip-existing (adopt). Divergent local files become overrides.')
+  }
   for (const op of ops) {
     const rel = path.relative(targetRoot, op.to)
-    const tag = op.exists ? 'overwrite' : 'new'
+    let tag = op.exists ? 'overwrite' : 'new'
+    if (adoptMode && op.skip) {
+      tag = overrideRecords.some((o) => o.path === rel) ? 'override' : 'unchanged'
+    }
     console.log(`  → ${rel} [${tag}]${op.note ? ` (${op.note})` : ''}`)
   }
 
@@ -81,34 +100,36 @@ export async function initCommand(options) {
     return
   }
 
-  const overwrites = ops.filter((op) => op.exists)
-  if (overwrites.length && !options.yes) {
-    const mode = options.advanced
-      ? await select({
-          message: `${overwrites.length} file(s) already exist. How should overwrites work?`,
-          choices: [
-            { name: 'Overwrite all existing kit files', value: 'all' },
-            { name: 'Ask for each file', value: 'ask' },
-            { name: 'Skip existing files (write new only)', value: 'skip' },
-          ],
-        })
-      : 'all'
+  if (!adoptMode) {
+    const overwrites = ops.filter((op) => op.exists)
+    if (overwrites.length && !options.yes) {
+      const mode = options.advanced
+        ? await select({
+            message: `${overwrites.length} file(s) already exist. How should overwrites work?`,
+            choices: [
+              { name: 'Overwrite all existing kit files', value: 'all' },
+              { name: 'Ask for each file', value: 'ask' },
+              { name: 'Skip existing files (write new only)', value: 'skip' },
+            ],
+          })
+        : 'all'
 
-    if (mode === 'skip') {
-      for (const op of overwrites) op.skip = true
-    } else if (mode === 'ask') {
-      for (const op of overwrites) {
-        const ok = await confirm({
-          message: `Overwrite ${path.relative(targetRoot, op.to)}?`,
-          default: true,
-        })
-        if (!ok) op.skip = true
+      if (mode === 'skip') {
+        for (const op of overwrites) op.skip = true
+      } else if (mode === 'ask') {
+        for (const op of overwrites) {
+          const ok = await confirm({
+            message: `Overwrite ${path.relative(targetRoot, op.to)}?`,
+            default: true,
+          })
+          if (!ok) op.skip = true
+        }
       }
     }
   }
 
   const activeOps = ops.filter((op) => !op.skip)
-  if (!activeOps.length) {
+  if (!activeOps.length && !adoptMode) {
     console.log('\nNothing to write.')
     return
   }
@@ -118,6 +139,20 @@ export async function initCommand(options) {
   const mergedPackages = uniqueIds([...(previous?.packages || []), ...packageIds])
   const mergedPresets = uniqueIds([...(previous?.presets || []), ...selectedPresets])
 
+  if (!adoptMode) {
+    managedRecords = ops
+      .filter((op) => !op.skip)
+      .map((op) => buildFileRecord(op, targetRoot))
+    // Drop overrides for paths we just overwrote
+    const writtenPaths = new Set(managedRecords.map((f) => f.path))
+    overrideRecords = (previous?.overrides || []).filter((o) => !writtenPaths.has(o.path))
+  } else {
+    // Merge with previous overrides for packages not in this install plan
+    const plannedPaths = new Set(ops.map((op) => path.relative(targetRoot, op.to)))
+    const keptPrev = (previous?.overrides || []).filter((o) => !plannedPaths.has(o.path))
+    overrideRecords = uniqueOverrides([...keptPrev, ...overrideRecords])
+  }
+
   const manifestPath = writeInstallManifest(targetRoot, {
     version: pkg.version,
     installedAt: previous?.installedAt || new Date().toISOString(),
@@ -125,15 +160,21 @@ export async function initCommand(options) {
     tools: uniqueIds([...(previous?.tools || []), ...tools]),
     presets: mergedPresets,
     packages: mergedPackages,
+    files: managedRecords,
+    overrides: overrideRecords,
   })
 
   console.log(`\nInstalled ${written.length} file(s)${skipped.length ? `, skipped ${skipped.length}` : ''}.`)
+  if (overrideRecords.length) {
+    console.log(`Local overrides kept: ${overrideRecords.length}`)
+  }
   console.log(`Manifest: ${path.relative(targetRoot, manifestPath)}`)
   console.log(`
 Next steps:
   1. Fill CLAUDE.md, .cursor/PROJECT_CONTEXT.md, and .cursor/DESIGN_PRINCIPLES.md
   2. In Cursor, run /devkit-setup-review to fit skills/commands to this project
-  3. Optional: npx alfred-agent-devkit doctor
+  3. Later: npx alfred-agent-devkit update   # refresh managed files only
+  4. Optional: npx alfred-agent-devkit doctor
 `)
 }
 
@@ -214,13 +255,31 @@ async function runAdvancedPrompts({ targetRoot, presets, packages }) {
 
 function annotateOps(ops) {
   for (const op of ops) {
-    // exists already set in planOpsForPackages; refresh for safety
     op.exists = op.exists === true
   }
 }
 
+function parsePresetFlag(value) {
+  if (!value) return []
+  return String(value)
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean)
+}
+
 function uniqueIds(ids) {
   return [...new Set(ids)]
+}
+
+function uniqueOverrides(items) {
+  const seen = new Set()
+  const out = []
+  for (const item of items) {
+    if (!item?.path || seen.has(item.path)) continue
+    seen.add(item.path)
+    out.push(item)
+  }
+  return out
 }
 
 function trimDesc(text) {

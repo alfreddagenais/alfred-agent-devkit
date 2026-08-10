@@ -18,13 +18,36 @@ node ./bin/alfred-agent-devkit.js init
 
 ```bash
 npx alfred-agent-devkit init --yes
+npx alfred-agent-devkit init --yes --presets preset-core,preset-ui
+npx alfred-agent-devkit init --yes --skip-existing --presets preset-core,preset-code-review
 npx alfred-agent-devkit init --advanced
 npx alfred-agent-devkit init --dry-run
+npx alfred-agent-devkit update
+npx alfred-agent-devkit update --dry-run
 npx alfred-agent-devkit list
 npx alfred-agent-devkit status
 npx alfred-agent-devkit doctor
 npx alfred-agent-devkit remove <package-id>
 ```
+
+## Managed vs custom (important)
+
+Install writes a lockfile: `.alfred-agent-devkit.json`.
+
+| Kind | What | `update` behavior |
+|------|------|-------------------|
+| **Managed** | Files the kit installed (`files[]`) | Refreshed from the current CLI |
+| **Override** | Kit destination you kept local (`overrides[]`) | Left alone |
+| **Custom** | Anything else under `.cursor/` (product rules, local agents) | Never touched |
+
+**Existing repos:** prefer adopt mode so you do not wipe project-specific forks:
+
+```bash
+npx alfred-agent-devkit init --yes --skip-existing \
+  --presets preset-core,preset-code-review,preset-architecture,preset-testing,preset-security,preset-ui
+```
+
+Missing kit files are added. Divergent locals become overrides. Later, `npx alfred-agent-devkit update` only refreshes managed paths.
 
 ## Model
 

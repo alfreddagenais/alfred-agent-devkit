@@ -3,6 +3,7 @@ import path from 'node:path'
 import { expandPresetIncludes, loadManifest } from './catalog.js'
 import { planClaudeWrites } from './adapters/claude.js'
 import { planCursorWrites } from './adapters/cursor.js'
+import { filesEqual, sha256File } from './hash.js'
 
 const TOOL_PLANNERS = {
   cursor: planCursorWrites,
@@ -134,6 +135,56 @@ export function mergeInstallManifest(targetRoot, patch, { dryRun = false } = {})
     updatedAt: new Date().toISOString(),
   }
   return writeInstallManifest(targetRoot, next, { dryRun })
+}
+
+/**
+ * Classify planned ops for adopt / skip-existing installs.
+ * - missing → write (managed)
+ * - exists + same as kit → manage, no write
+ * - exists + different → override (keep local), no write
+ */
+export function classifyOpsForAdopt(ops, targetRoot) {
+  const managed = []
+  const overrides = []
+  const toWrite = []
+
+  for (const op of ops) {
+    const rel = path.relative(targetRoot, op.to)
+    if (!op.exists) {
+      toWrite.push(op)
+      managed.push(buildFileRecord(op, targetRoot, { fromSource: true }))
+      continue
+    }
+
+    if (filesEqual(op.from, op.to)) {
+      managed.push(buildFileRecord(op, targetRoot, { fromSource: true }))
+      op.skip = true
+      continue
+    }
+
+    // Context starters already only plan when missing; treat other diffs as overrides.
+    overrides.push({
+      packageId: op.packageId,
+      path: rel,
+      reason: 'local-copy-kept',
+    })
+    op.skip = true
+  }
+
+  return { managed, overrides, toWrite }
+}
+
+export function buildFileRecord(op, targetRoot, { fromSource = false } = {}) {
+  const filePath = fromSource || !fs.existsSync(op.to) ? op.from : op.to
+  return {
+    packageId: op.packageId,
+    path: path.relative(targetRoot, op.to),
+    sha256: sha256File(filePath),
+  }
+}
+
+export function overridePathSet(overrides = []) {
+  return new Set(overrides.map((o) => o.path))
 }
 
 function pruneEmptyParents(filePath, stopAt) {

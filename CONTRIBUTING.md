@@ -28,11 +28,12 @@ npm install
 node ./bin/alfred-agent-devkit.js list
 node ./bin/alfred-agent-devkit.js init --dry-run
 node ./bin/alfred-agent-devkit.js init --yes --cwd /tmp/aadk-smoke
+node ./bin/alfred-agent-devkit.js update --cwd /tmp/aadk-smoke
 node ./bin/alfred-agent-devkit.js doctor --cwd /tmp/aadk-smoke
 node ./bin/alfred-agent-devkit.js status --cwd /tmp/aadk-smoke
 ```
 
-If you touch install paths or adapters, try `init --advanced` in a throwaway folder too.
+If you touch install paths or adapters, try `init --advanced` and `init --yes --skip-existing` in a throwaway folder too.
 
 ## PR tips
 

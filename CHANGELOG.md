@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.3.0
+
+### Added
+
+- `update`: refresh managed kit files from the current CLI; keeps `overrides` and all custom project files
+- `init --skip-existing`: adopt mode for repos that already have `.cursor/` content
+- `init --presets <ids>`: non-interactive preset list (use with `--yes`)
+- Lockfile fields `files[]` (managed paths + sha256) and `overrides[]` (local copies kept)
+
+### Changed
+
+- `status` reports managed file count and override paths
+- Post-init next steps mention `update`
+
 ## 0.2.0
 
 ### Added

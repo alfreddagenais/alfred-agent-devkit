@@ -49,10 +49,20 @@ export function runDoctor(targetRoot) {
   const packages = Array.isArray(manifest.packages) ? manifest.packages : []
   const presets = Array.isArray(manifest.presets) ? manifest.presets : []
 
+  const overrides = Array.isArray(manifest.overrides) ? manifest.overrides : []
+  const files = Array.isArray(manifest.files) ? manifest.files : []
+
   findings.push({
     level: 'ok',
-    message: `Manifest present (tools: ${tools.join(', ') || 'none'}; presets: ${presets.length}; packages: ${packages.length})`,
+    message: `Manifest present (tools: ${tools.join(', ') || 'none'}; presets: ${presets.length}; packages: ${packages.length}; managed: ${files.length}; overrides: ${overrides.length})`,
   })
+
+  if (overrides.length) {
+    findings.push({
+      level: 'info',
+      message: `${overrides.length} local override(s) are skipped by update. Clear entries in .alfred-agent-devkit.json when ready to manage those paths.`,
+    })
+  }
 
   if (!tools.length) {
     findings.push({ level: 'warn', message: 'Manifest has no tools listed.' })
