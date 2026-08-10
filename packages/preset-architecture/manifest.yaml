@@ -1,0 +1,16 @@
+id: preset-architecture
+name: Architecture
+version: 0.1.0
+type: preset
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+description: >
+  Architecture ownership via tech-lead-architect agent.
+tags: [preset, architecture]
+includes:
+  - tech-lead-architect
+publish:
+  strip: [secrets, private-paths, experiments]

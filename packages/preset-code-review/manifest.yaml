@@ -1,0 +1,19 @@
+id: preset-code-review
+name: Code Review
+version: 0.1.0
+type: preset
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+description: >
+  Independent QA review skill, agent, command, plus skeptical security validator.
+tags: [preset, review]
+includes:
+  - independent-qa-review
+  - independent-qa-reviewer
+  - qa-independent-review
+  - qa-security-validator
+publish:
+  strip: [secrets, private-paths, experiments]

@@ -1,0 +1,46 @@
+# CLAUDE.md - AI entry for this project
+
+Short orientation for AI assistants. Keep product facts here (and in `.cursor/PROJECT_CONTEXT.md`), not inside shared agent packages.
+
+## What is this project?
+
+<!-- One paragraph: product, users, non-goals -->
+
+## North star
+
+> <!-- One guiding question for product decisions -->
+
+## Stack
+
+| Layer | Choice |
+|-------|--------|
+| Backend | |
+| Frontend | |
+| Infra / local run | |
+
+## Key commands
+
+Document how to lint, test, and run the app from the repo root.
+
+```bash
+# examples: replace with real commands
+# npm test
+# composer test
+```
+
+## Non-negotiables
+
+- Language: English in code/comments/UI unless explicitly requested otherwise
+- <!-- auth, tenancy, security, data rules -->
+
+## Context files
+
+| File | Purpose |
+|------|---------|
+| `.cursor/PROJECT_CONTEXT.md` | Full domain & architecture |
+| `.cursor/DESIGN_PRINCIPLES.md` | UI/UX standards |
+| `AGENTS.md` | Optional orchestration notes for this repo |
+
+## Agents
+
+Installed via `npx alfred-agent-devkit init`. Agents should **read this file and PROJECT_CONTEXT** before making product decisions.

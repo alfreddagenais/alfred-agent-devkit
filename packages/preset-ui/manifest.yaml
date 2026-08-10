@@ -1,0 +1,20 @@
+id: preset-ui
+name: UI
+version: 0.1.0
+type: preset
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+description: >
+  Frontend design skill, UI/UX agent, and critique/polish/clarify commands.
+tags: [preset, ui]
+includes:
+  - frontend-design
+  - ui-ux-experience
+  - ui-critique
+  - ui-polish
+  - ui-clarify
+publish:
+  strip: [secrets, private-paths, experiments]

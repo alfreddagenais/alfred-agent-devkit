@@ -1,0 +1,21 @@
+id: tech-lead-architect
+name: Tech Lead Architect
+version: 0.1.0
+type: agent
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+description: >
+  Owns architecture, data model, API contracts, and technical decisions.
+  Use for system design, schema design, API design, or MVP milestones.
+tags:
+  - architecture
+  - agent
+origin: howdyAl-VirtuoDJ/.cursor/agents/tech-lead-architect.md
+publish:
+  strip:
+    - secrets
+    - private-paths
+    - experiments

@@ -1,0 +1,21 @@
+id: independent-qa-reviewer
+name: Independent QA Reviewer
+version: 0.1.0
+type: agent
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+description: >
+  Independent QA reviewer with fresh eyes. Validates recent changes end-to-end
+  and produces a structured report with manual tests and user decisions.
+tags:
+  - qa
+  - agent
+origin: howdyAl-VirtuoDJ/.cursor/agents/independent-qa-reviewer.md
+publish:
+  strip:
+    - secrets
+    - private-paths
+    - experiments

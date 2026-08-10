@@ -1,0 +1,16 @@
+id: preset-testing
+name: Testing
+version: 0.1.0
+type: preset
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+description: >
+  Test quality skill for coverage gap analysis and lean test authoring.
+tags: [preset, testing]
+includes:
+  - test-quality
+publish:
+  strip: [secrets, private-paths, experiments]

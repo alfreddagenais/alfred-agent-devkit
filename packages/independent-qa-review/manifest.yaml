@@ -1,0 +1,22 @@
+id: independent-qa-review
+name: Independent QA Review
+version: 0.1.0
+type: skill
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+description: >
+  Independent QA review of recent changes with fresh eyes. Validates
+  correctness, UX, copy, security, tests, and regressions; produces a
+  structured report with manual test cases.
+tags:
+  - qa
+  - review
+origin: howdyAl-VirtuoDJ/.cursor/skills/independent-qa-review
+publish:
+  strip:
+    - secrets
+    - private-paths
+    - experiments

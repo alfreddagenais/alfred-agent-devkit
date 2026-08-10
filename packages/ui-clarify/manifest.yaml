@@ -1,0 +1,15 @@
+id: ui-clarify
+name: UI Clarify
+version: 0.1.0
+type: command
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+description: >
+  Improve UX copy for clarity, honesty, and action orientation.
+tags: [ui, command]
+origin: howdyAl-VirtuoDJ/.cursor/commands/ui-clarify.md
+publish:
+  strip: [secrets, private-paths, experiments]

@@ -1,0 +1,23 @@
+id: coach-clarifying
+name: Coach Clarifying (C.O.A.C.H.)
+version: 0.1.0
+type: skill
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+description: >
+  Structured clarification using C.O.A.C.H. when requirements are ambiguous.
+  Use for discovery before coding, or when missing details would change
+  architecture, UX, or security.
+tags:
+  - clarifying
+  - coach
+  - discovery
+origin: howdyAl-VirtuoDJ/.cursor/skills/clarifying-questions
+publish:
+  strip:
+    - secrets
+    - private-paths
+    - experiments

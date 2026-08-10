@@ -1,0 +1,15 @@
+id: ui-critique
+name: UI Critique
+version: 0.1.0
+type: command
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+description: >
+  Critique hierarchy, clarity, and emotional resonance; score C.L.E.A.R.
+tags: [ui, command]
+origin: howdyAl-VirtuoDJ/.cursor/commands/ui-critique.md
+publish:
+  strip: [secrets, private-paths, experiments]

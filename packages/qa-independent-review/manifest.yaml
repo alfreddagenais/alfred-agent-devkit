@@ -1,0 +1,20 @@
+id: qa-independent-review
+name: QA Independent Review Command
+version: 0.1.0
+type: command
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+description: >
+  Slash command that invokes Independent QA Reviewer with the review skill.
+tags:
+  - qa
+  - command
+origin: howdyAl-VirtuoDJ/.cursor/commands/qa-independent-review.md
+publish:
+  strip:
+    - secrets
+    - private-paths
+    - experiments

@@ -1,0 +1,16 @@
+id: preset-security
+name: Security
+version: 0.1.0
+type: preset
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+description: >
+  Security-focused QA validator agent.
+tags: [preset, security]
+includes:
+  - qa-security-validator
+publish:
+  strip: [secrets, private-paths, experiments]

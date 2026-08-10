@@ -1,0 +1,20 @@
+id: coach-clarifying-rule
+name: Coach Clarifying Rule
+version: 0.1.0
+type: rule
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+description: >
+  Always-on C.O.A.C.H. clarifying-question policy with bypass and batch modes.
+tags:
+  - clarifying
+  - coach
+origin: howdyAl-VirtuoDJ/.cursor/rules/clarifying-questions.mdc
+publish:
+  strip:
+    - secrets
+    - private-paths
+    - experiments

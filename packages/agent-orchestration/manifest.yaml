@@ -1,0 +1,21 @@
+id: agent-orchestration
+name: Agent Orchestration
+version: 0.1.0
+type: rule
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+description: >
+  Main chat acts as orchestrator: route to specialist agents when helpful,
+  skip routing when the user names an agent explicitly.
+tags:
+  - orchestration
+  - agents
+origin: howdyAl-VirtuoDJ/.cursor/rules/agent-orchestration.mdc
+publish:
+  strip:
+    - secrets
+    - private-paths
+    - experiments

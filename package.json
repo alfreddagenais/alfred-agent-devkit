@@ -1,0 +1,43 @@
+{
+  "name": "alfred-agent-devkit",
+  "version": "0.1.0",
+  "description": "Installable AI agents, skills and commands. Packages, presets, adapters.",
+  "type": "module",
+  "bin": {
+    "alfred-agent-devkit": "./bin/alfred-agent-devkit.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "packages",
+    "adapters",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "start": "node ./bin/alfred-agent-devkit.js",
+    "init": "node ./bin/alfred-agent-devkit.js init"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "keywords": [
+    "agents",
+    "cursor",
+    "claude",
+    "skills",
+    "devkit",
+    "cli"
+  ],
+  "author": "Alfred Dagenais",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alfreddagenais/alfred-agent-devkit.git"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^8.5.2",
+    "commander": "^15.0.0",
+    "yaml": "^2.9.0"
+  }
+}

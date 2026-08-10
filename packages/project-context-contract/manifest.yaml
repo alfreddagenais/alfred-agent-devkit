@@ -1,0 +1,23 @@
+id: project-context-contract
+name: Project Context Contract
+version: 0.1.0
+type: template
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+  - claude
+description: >
+  Template and contract for per-project AI context files (CLAUDE.md,
+  PROJECT_CONTEXT, DESIGN_PRINCIPLES) that specialized agents must read.
+tags:
+  - context
+  - template
+  - onboarding
+origin: null
+publish:
+  strip:
+    - secrets
+    - private-paths
+    - experiments

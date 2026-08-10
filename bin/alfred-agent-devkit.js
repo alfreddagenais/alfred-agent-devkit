@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+
+import { run } from '../src/index.js'
+
+run(process.argv).catch((error) => {
+  console.error(error?.message || error)
+  process.exitCode = 1
+})

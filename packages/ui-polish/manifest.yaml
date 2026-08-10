@@ -1,0 +1,15 @@
+id: ui-polish
+name: UI Polish
+version: 0.1.0
+type: command
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+description: >
+  Final UI polish pass before shipping: spacing, alignment, states, copy.
+tags: [ui, command]
+origin: howdyAl-VirtuoDJ/.cursor/commands/ui-polish.md
+publish:
+  strip: [secrets, private-paths, experiments]

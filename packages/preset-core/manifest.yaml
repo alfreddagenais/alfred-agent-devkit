@@ -1,0 +1,22 @@
+id: preset-core
+name: Core
+version: 0.1.2
+type: preset
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+  - claude
+description: >
+  Baseline installer preset: English rule, orchestration, C.O.A.C.H., and
+  project context contract.
+tags: [preset, core]
+includes:
+  - english-code
+  - agent-orchestration
+  - coach-clarifying
+  - coach-clarifying-rule
+  - project-context-contract
+publish:
+  strip: [secrets, private-paths, experiments]

@@ -1,0 +1,21 @@
+id: test-quality
+name: Test Quality
+version: 0.1.0
+type: skill
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+description: >
+  Analyzes test coverage, identifies gaps in core domains from project context,
+  adds or updates tests when necessary, and validates that tests pass.
+tags:
+  - testing
+  - quality
+origin: howdyAl-VirtuoDJ/.cursor/skills/test-quality
+publish:
+  strip:
+    - secrets
+    - private-paths
+    - experiments

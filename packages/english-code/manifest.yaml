@@ -1,0 +1,21 @@
+id: english-code
+name: English in Code
+version: 0.1.0
+type: rule
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+description: >
+  Requires English for code, comments, logs, and UI strings unless the user
+  explicitly requests another language for a specific context.
+tags:
+  - language
+  - conventions
+origin: howdyDeck-scripts/.cursor/rules/english-code.mdc
+publish:
+  strip:
+    - secrets
+    - private-paths
+    - experiments

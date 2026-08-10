@@ -1,0 +1,22 @@
+id: qa-security-validator
+name: QA Security Validator
+version: 0.1.0
+type: agent
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+description: >
+  Skeptical QA specialist. Validates correctness, security, coherence, and
+  design quality before merge.
+tags:
+  - security
+  - qa
+  - agent
+origin: howdyAl-VirtuoDJ/.cursor/agents/qa-security-validator.md
+publish:
+  strip:
+    - secrets
+    - private-paths
+    - experiments
