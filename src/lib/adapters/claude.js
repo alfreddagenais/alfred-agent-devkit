@@ -1,6 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { packagesDir } from '../paths.js'
+import { planScriptStarters } from './scripts.js'
 
 /**
  * Lightweight Claude Code mapping (v0.1).
@@ -39,6 +40,7 @@ export function planClaudeWrites(packageId, manifest, targetRoot) {
       pushIfExists('SKILL.md', path.join('.claude', 'skills', packageId, 'SKILL.md'))
       pushIfExists('reference.md', path.join('.claude', 'skills', packageId, 'reference.md'))
       pushIfExists('command.md', path.join('.claude', 'commands', `${packageId}.md`))
+      pushIfExists('agent.md', path.join('.claude', 'agents', `${packageId}.md`))
       break
     case 'agent':
       pushIfExists('agent.md', path.join('.claude', 'agents', `${packageId}.md`))
@@ -55,6 +57,8 @@ export function planClaudeWrites(packageId, manifest, targetRoot) {
     default:
       break
   }
+
+  ops.push(...planScriptStarters(contentDir, targetRoot, packageId))
 
   return ops
 }

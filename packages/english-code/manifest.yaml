@@ -13,7 +13,7 @@ description: >
 tags:
   - language
   - conventions
-origin: howdyDeck-scripts/.cursor/rules/english-code.mdc
+origin: null
 publish:
   strip:
     - secrets

@@ -1,6 +1,6 @@
 ---
 name: independent-qa-reviewer
-version: 0.1.0
+version: 0.1.1
 description: >-
   Independent QA reviewer with fresh eyes. Validates recent changes end-to-end
   (correctness, UX, copy, tests, regressions). Produces a structured report with
@@ -40,7 +40,7 @@ Read `CLAUDE.md`, `.cursor/PROJECT_CONTEXT.md`, and `.cursor/DESIGN_PRINCIPLES.m
 | **Security** | Input validation, auth boundaries, no secrets in clients, XSS/injection |
 | **Types & lint** | Project lint/test/build commands |
 | **Tests** | Existing tests pass; gaps for changed behavior |
-| **UX / UI** | Hierarchy, primary action, feedback, accessibility |
+| **UX / UI** | Hierarchy, primary action, feedback, accessibility; overlay contrast; trust/cost next to the object |
 | **Copy** | Labels match behavior; English unless project says otherwise |
 | **Docs** | Stale references to removed features |
 

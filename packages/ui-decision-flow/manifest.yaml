@@ -1,0 +1,16 @@
+id: ui-decision-flow
+name: UI Decision Flow
+version: 0.1.0
+type: command
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+description: >
+  Decision-flow pass: five-second test, trust cluster, cost, quantity+commit,
+  sticky actions. Ethical conversion only; no dark patterns.
+tags: [ui, command, ux]
+origin: null
+publish:
+  strip: [secrets, private-paths, experiments]

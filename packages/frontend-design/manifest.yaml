@@ -1,6 +1,6 @@
 id: frontend-design
 name: Frontend Design
-version: 0.1.0
+version: 0.2.0
 type: skill
 status: published
 targets:
@@ -8,12 +8,12 @@ targets:
 tools:
   - cursor
 description: >
-  Frontend design guidance: anti-patterns, C.L.E.A.R., CCD, and focused UI
-  command passes. Use when building or reviewing UI.
+  Frontend design guidance: anti-patterns, C.L.E.A.R., CCD, product-UI craft,
+  and focused UI command passes. Use when building or reviewing UI.
 tags:
   - ui
   - design
-origin: howdyAl-VirtuoDJ/.cursor/skills/frontend-design
+origin: null
 publish:
   strip:
     - secrets

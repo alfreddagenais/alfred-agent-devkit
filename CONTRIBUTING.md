@@ -35,6 +35,25 @@ node ./bin/alfred-agent-devkit.js status --cwd /tmp/aadk-smoke
 
 If you touch install paths or adapters, try `init --advanced` and `init --yes --skip-existing` in a throwaway folder too.
 
+## Version and dependencies
+
+Two different jobs:
+
+| Job | How |
+| --- | --- |
+| **App SemVer** (`package.json` `"version"`) | `./scripts/bump-version.sh patch` (or `minor` / `set x.y.z`). In Cursor: `/bump-version`. |
+| **npm/Composer packages** | Cursor agent `package-updater` or `/package-updater`. Safe patch/minor first; majors wait for you. |
+
+Do not hand-edit `package.json` `"version"` without the script (it also refreshes `package-lock.json` and the README Presets heading).
+
+To use these agents while working on this repo (or refresh the dogfood copies from `packages/`):
+
+```bash
+node ./bin/alfred-agent-devkit.js init --yes --skip-existing --presets preset-release
+```
+
+Canonical source is `packages/`. `.cursor/agents/package-updater.md` and friends are the Cursor destinations, same as HowdyDeck.
+
 ## PR tips
 
 - Say what changed and why (one short paragraph is enough).

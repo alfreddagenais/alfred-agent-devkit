@@ -12,7 +12,7 @@ description: >
 tags:
   - qa
   - command
-origin: howdyAl-VirtuoDJ/.cursor/commands/qa-independent-review.md
+origin: null
 publish:
   strip:
     - secrets

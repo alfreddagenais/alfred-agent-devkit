@@ -13,7 +13,7 @@ description: >
 tags:
   - architecture
   - agent
-origin: howdyAl-VirtuoDJ/.cursor/agents/tech-lead-architect.md
+origin: null
 publish:
   strip:
     - secrets

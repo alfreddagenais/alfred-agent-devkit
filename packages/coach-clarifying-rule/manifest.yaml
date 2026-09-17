@@ -12,7 +12,7 @@ description: >
 tags:
   - clarifying
   - coach
-origin: howdyAl-VirtuoDJ/.cursor/rules/clarifying-questions.mdc
+origin: null
 publish:
   strip:
     - secrets

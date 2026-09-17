@@ -1,0 +1,25 @@
+id: package-updater
+name: Package Updater
+version: 0.1.0
+type: skill
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+  - claude
+description: >
+  Audits and updates npm, yarn, pnpm, and Composer dependencies. Applies
+  patch/minor first, defers majors, and keeps lock files in sync. Use when
+  updating packages or when the user asks for dependency upgrades.
+tags:
+  - dependencies
+  - packages
+  - npm
+  - composer
+origin: null
+publish:
+  strip:
+    - secrets
+    - private-paths
+    - experiments

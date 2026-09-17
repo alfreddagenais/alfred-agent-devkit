@@ -9,7 +9,8 @@
 | Architecture | `tech-lead-architect` | Non-trivial systems, refactors, greenfield structure |
 | Testing | `test-quality` | Repos with or adopting automated tests |
 | Security | `qa-security-validator` | Auth, multi-tenant, payments, public APIs |
-| UI | `frontend-design`, `ui-ux-experience`, `ui-critique`, `ui-polish`, `ui-clarify` | Real UI / design work |
+| UI | `frontend-design`, `ui-ux-experience`, `ui-critique`, `ui-polish`, `ui-clarify`, `ui-visual-system`, `ui-decision-flow`, `ui-surface-fit` | Real UI / design work |
+| Release | `changelog-writer`, `write-changelog`, `bump-version`, `version-bump`, `package-updater` | SemVer, dependency upgrades, user-facing notes |
 
 ## Safe removal order
 

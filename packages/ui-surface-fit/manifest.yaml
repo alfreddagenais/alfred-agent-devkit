@@ -1,0 +1,17 @@
+id: ui-surface-fit
+name: UI Surface Fit
+version: 0.1.0
+type: command
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+description: >
+  Surface-fit pass for mobile, desktop, and web: thumb reach, keyboard,
+  scan key, sticky chrome, resize. Use when UI must work on more than one
+  device class.
+tags: [ui, command, mobile, desktop, web]
+origin: null
+publish:
+  strip: [secrets, private-paths, experiments]

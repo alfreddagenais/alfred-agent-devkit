@@ -1,6 +1,6 @@
 id: ui-ux-experience
 name: UI/UX Experience
-version: 0.1.0
+version: 0.2.0
 type: agent
 status: published
 targets:
@@ -8,13 +8,13 @@ targets:
 tools:
   - cursor
 description: >
-  UI/UX specialist using B.I.A.S., C.L.E.A.R., and CCD. Inclusive, accessible
-  interfaces; no dark patterns.
+  UI/UX specialist using B.I.A.S., C.L.E.A.R., CCD, and product-UI craft
+  lenses. Inclusive, accessible interfaces; no dark patterns.
 tags:
   - ui
   - ux
   - agent
-origin: howdyAl-VirtuoDJ/.cursor/agents/ui-ux-experience.md
+origin: null
 publish:
   strip:
     - secrets

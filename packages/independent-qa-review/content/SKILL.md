@@ -1,6 +1,6 @@
 ---
 name: independent-qa-review
-version: 0.1.0
+version: 0.1.1
 description: >-
   Independent QA review of recent changes with fresh eyes. Validates
   correctness, UX, copy, security, tests, and regressions; produces a
@@ -42,11 +42,13 @@ Use the project’s documented lint/test/build commands from `CLAUDE.md` or docs
 For UI changes, score against the project’s design principles (C.L.E.A.R. when present):
 
 - One primary action per section?
-- Labels match actual behavior?
-- State shown where the user acts?
+- Labels match actual behavior? No redundant “Price:” or mutable qty in the title?
+- State shown where the user acts? Trust/cost next to the object when the job is to decide?
+- Overlay chrome still readable on light *and* dark media?
 - Secondary actions de-emphasized?
 - Keyboard / screen reader basics?
 - Touch targets adequate for the product’s devices?
+- Mobile and desktop still preserve the scan key (status, cost, next action)?
 
 ## Step 5: Manual test plan
 

@@ -15,7 +15,7 @@ tags:
   - clarifying
   - coach
   - discovery
-origin: howdyAl-VirtuoDJ/.cursor/skills/clarifying-questions
+origin: null
 publish:
   strip:
     - secrets

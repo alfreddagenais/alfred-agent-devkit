@@ -1,6 +1,6 @@
 id: preset-ui
 name: UI
-version: 0.1.0
+version: 0.2.0
 type: preset
 status: published
 targets:
@@ -8,7 +8,8 @@ targets:
 tools:
   - cursor
 description: >
-  Frontend design skill, UI/UX agent, and critique/polish/clarify commands.
+  Frontend design skill (with craft playbook), UI/UX agent, critique/polish/
+  clarify, plus visual-system, decision-flow, and surface-fit command passes.
 tags: [preset, ui]
 includes:
   - frontend-design
@@ -16,5 +17,8 @@ includes:
   - ui-critique
   - ui-polish
   - ui-clarify
+  - ui-visual-system
+  - ui-decision-flow
+  - ui-surface-fit
 publish:
   strip: [secrets, private-paths, experiments]

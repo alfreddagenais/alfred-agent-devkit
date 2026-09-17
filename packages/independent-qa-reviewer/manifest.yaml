@@ -1,6 +1,6 @@
 id: independent-qa-reviewer
 name: Independent QA Reviewer
-version: 0.1.0
+version: 0.1.1
 type: agent
 status: published
 targets:
@@ -13,7 +13,7 @@ description: >
 tags:
   - qa
   - agent
-origin: howdyAl-VirtuoDJ/.cursor/agents/independent-qa-reviewer.md
+origin: null
 publish:
   strip:
     - secrets

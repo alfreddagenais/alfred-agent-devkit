@@ -28,6 +28,7 @@ const DEFAULT_PRESETS = [
   'preset-testing',
   'preset-security',
   'preset-ui',
+  'preset-release',
 ]
 
 const YES_PRESETS = ['preset-core', 'preset-code-review']

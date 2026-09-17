@@ -1,0 +1,22 @@
+id: write-changelog
+name: Write Changelog Command
+version: 0.1.0
+type: command
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+  - claude
+description: >
+  Slash command that invokes changelog-writer for the current minor or
+  major app version.
+tags:
+  - changelog
+  - command
+origin: null
+publish:
+  strip:
+    - secrets
+    - private-paths
+    - experiments

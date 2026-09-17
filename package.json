@@ -1,6 +1,6 @@
 {
   "name": "alfred-agent-devkit",
-  "version": "0.3.0",
+  "version": "0.4.1",
   "description": "Installable AI agents, skills and commands. Packages, presets, adapters.",
   "type": "module",
   "bin": {
@@ -22,7 +22,8 @@
     "init": "node ./bin/alfred-agent-devkit.js init",
     "update": "node ./bin/alfred-agent-devkit.js update",
     "doctor": "node ./bin/alfred-agent-devkit.js doctor",
-    "status": "node ./bin/alfred-agent-devkit.js status"
+    "status": "node ./bin/alfred-agent-devkit.js status",
+    "bump-version": "bash ./scripts/bump-version.sh"
   },
   "engines": {
     "node": ">=24"

@@ -1,0 +1,24 @@
+id: changelog-writer
+name: Changelog Writer
+version: 0.1.0
+type: skill
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+  - claude
+description: >
+  Writes concise user-facing changelog JSON for minor and major app
+  releases. Ships a companion agent. Use after a version bump,
+  /write-changelog, or when filling a releases folder.
+tags:
+  - changelog
+  - release
+  - writing
+origin: null
+publish:
+  strip:
+    - secrets
+    - private-paths
+    - experiments

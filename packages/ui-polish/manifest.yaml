@@ -1,6 +1,6 @@
 id: ui-polish
 name: UI Polish
-version: 0.1.0
+version: 0.2.0
 type: command
 status: published
 targets:
@@ -8,8 +8,9 @@ targets:
 tools:
   - cursor
 description: >
-  Final UI polish pass before shipping: spacing, alignment, states, copy.
+  Final UI polish pass before shipping: spacing, overlay contrast, type,
+  dividers, states, copy.
 tags: [ui, command]
-origin: howdyAl-VirtuoDJ/.cursor/commands/ui-polish.md
+origin: null
 publish:
   strip: [secrets, private-paths, experiments]

@@ -1,6 +1,6 @@
 id: ui-clarify
 name: UI Clarify
-version: 0.1.0
+version: 0.2.0
 type: command
 status: published
 targets:
@@ -8,8 +8,9 @@ targets:
 tools:
   - cursor
 description: >
-  Improve UX copy for clarity, honesty, and action orientation.
+  Improve UX copy for clarity, honesty, and action orientation. Catch
+  redundant labels and misleading titles.
 tags: [ui, command]
-origin: howdyAl-VirtuoDJ/.cursor/commands/ui-clarify.md
+origin: null
 publish:
   strip: [secrets, private-paths, experiments]

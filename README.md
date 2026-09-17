@@ -12,7 +12,7 @@ node ./bin/alfred-agent-devkit.js init
 ## Flow
 
 1. Pick tools (Cursor, Claude Code)
-2. Pick presets (Core, Code Review, Architecture, Testing, Security, UI)
+2. Pick presets (Core, Code Review, Architecture, Testing, Security, UI, Release)
 3. Files land in `.cursor/` (and `.claude/` if selected)
 4. Run `/devkit-setup-review` in Cursor to fit the kit to your project
 
@@ -44,7 +44,7 @@ Install writes a lockfile: `.alfred-agent-devkit.json`.
 
 ```bash
 npx alfred-agent-devkit init --yes --skip-existing \
-  --presets preset-core,preset-code-review,preset-architecture,preset-testing,preset-security,preset-ui
+  --presets preset-core,preset-code-review,preset-architecture,preset-testing,preset-security,preset-ui,preset-release
 ```
 
 Missing kit files are added. Divergent locals become overrides. Later, `npx alfred-agent-devkit update` only refreshes managed paths.
@@ -67,7 +67,7 @@ Agents are specialists without product memory. Each project should keep:
 
 `init` writes starters for those files only when they are missing.
 
-## Presets (v0.2)
+## Presets (v0.4.1)
 
 | Preset | Includes |
 |--------|----------|
@@ -76,7 +76,8 @@ Agents are specialists without product memory. Each project should keep:
 | **Architecture** | tech-lead-architect |
 | **Testing** | test-quality |
 | **Security** | qa-security-validator |
-| **UI** | frontend-design, ui-ux agent, critique / polish / clarify |
+| **UI** | frontend-design (craft playbook), ui-ux agent, critique / polish / clarify / visual-system / decision-flow / surface-fit |
+| **Release** | SemVer (`/bump-version`), package updater, changelog-writer, `/write-changelog` |
 
 ## Recommended setup (2 steps)
 

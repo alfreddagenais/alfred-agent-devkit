@@ -1,6 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { packagesDir } from '../paths.js'
+import { planScriptStarters } from './scripts.js'
 
 /**
  * Map a package into Cursor destinations under targetRoot.
@@ -39,6 +40,8 @@ export function planCursorWrites(packageId, manifest, targetRoot) {
       pushIfExists('reference.md', path.join('.cursor', 'skills', packageId, 'reference.md'))
       // Optional companion slash command shipped with the skill
       pushIfExists('command.md', path.join('.cursor', 'commands', `${packageId}.md`))
+      // Optional companion agent (same id as the skill)
+      pushIfExists('agent.md', path.join('.cursor', 'agents', `${packageId}.md`))
       break
     case 'agent':
       pushIfExists('agent.md', path.join('.cursor', 'agents', `${packageId}.md`))
@@ -64,6 +67,8 @@ export function planCursorWrites(packageId, manifest, targetRoot) {
     default:
       break
   }
+
+  ops.push(...planScriptStarters(contentDir, targetRoot, packageId))
 
   return ops
 }

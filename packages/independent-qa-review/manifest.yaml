@@ -1,6 +1,6 @@
 id: independent-qa-review
 name: Independent QA Review
-version: 0.1.0
+version: 0.1.1
 type: skill
 status: published
 targets:
@@ -14,7 +14,7 @@ description: >
 tags:
   - qa
   - review
-origin: howdyAl-VirtuoDJ/.cursor/skills/independent-qa-review
+origin: null
 publish:
   strip:
     - secrets

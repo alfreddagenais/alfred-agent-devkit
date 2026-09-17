@@ -13,7 +13,7 @@ description: >
 tags:
   - testing
   - quality
-origin: howdyAl-VirtuoDJ/.cursor/skills/test-quality
+origin: null
 publish:
   strip:
     - secrets

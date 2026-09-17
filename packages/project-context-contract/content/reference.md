@@ -16,6 +16,6 @@
 
 ## What belongs in shared packages
 
-- Generic workflows (QA report template, C.O.A.C.H., design anti-patterns)
+- Generic workflows (QA report template, C.O.A.C.H., design anti-patterns, product-UI craft)
 - Role definitions that say “read PROJECT_CONTEXT” instead of embedding product lore
 - Command maps as **placeholders** the project fills in (`lint`, `test`, `build`)

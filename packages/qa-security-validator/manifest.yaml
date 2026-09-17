@@ -14,7 +14,7 @@ tags:
   - security
   - qa
   - agent
-origin: howdyAl-VirtuoDJ/.cursor/agents/qa-security-validator.md
+origin: null
 publish:
   strip:
     - secrets

@@ -1,5 +1,5 @@
 ---
-version: 0.1.0
+version: 0.1.1
 description: Agent orchestration: manager decides which subagents to invoke
 alwaysApply: true
 ---
@@ -43,4 +43,5 @@ Before responding or writing code:
 
 - Simple lint/test fix → lint/validate or test-quality agents when installed.
 - Broad “add feature X” → architect first, then implementation agents.
+- Visual / UX / product-page work → `ui-ux-experience` when installed. Prefer focused commands `/ui-visual-system`, `/ui-decision-flow`, `/ui-surface-fit`, `/ui-critique` over a vague “make it pretty.”
 - Explicit agent → direct path, no orchestration.

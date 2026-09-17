@@ -1,0 +1,22 @@
+id: preset-release
+name: Release
+version: 0.2.0
+type: preset
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+  - claude
+description: >
+  App SemVer bump, dependency updater, changelog writer, and slash
+  commands for release notes.
+tags: [preset, release, changelog, version, dependencies]
+includes:
+  - changelog-writer
+  - write-changelog
+  - bump-version
+  - version-bump
+  - package-updater
+publish:
+  strip: [secrets, private-paths, experiments]

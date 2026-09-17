@@ -12,6 +12,9 @@ UI/UX standards for this project. Agents should read this before visual or copy 
 - Do not wrap everything in cards
 - Do not use Inter / Roboto / Arial / system UI as the expressive display face when brand type exists
 - Do not put detached badges or promo chips on hero media
+- Do not drop icons on photos without a chip/scrim (the next image will be bright)
+- Do not put mutable quantity/filter state in the title when a control already owns it
+- Do not shout the primary button in ALL CAPS
 
 ## C.L.E.A.R. checks
 
@@ -43,6 +46,19 @@ UI/UX standards for this project. Agents should read this before visual or copy 
 
 - Prefer `transform` and `opacity`
 - Avoid bounce / elastic easing unless brand-defining
+
+## Product UI craft
+
+When a screen names an object and asks for a commit:
+
+- Overlay controls own their contrast on any media
+- Shared layout inset; chrome quieter than content
+- Title + trust + cost/status in one first-read cluster
+- Pair quantity/filters with the commit control; put the consequence on the button
+- Long pages: sticky identity and sticky primary action
+- Check mobile, desktop, and web if those surfaces ship
+
+Full playbook: skill `frontend-design` → `reference.md` when installed.
 
 ## Components
 

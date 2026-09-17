@@ -1,6 +1,6 @@
 ---
 name: devkit-setup-review
-version: 0.1.0
+version: 0.1.3
 description: >-
   Post-install review that fits alfred-agent-devkit skills, commands, and
   project context to the real repository. Suggests keep/remove actions and

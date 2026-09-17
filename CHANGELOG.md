@@ -1,5 +1,36 @@
 # Changelog
 
+## 0.4.1
+
+### Added
+
+- Product-UI craft playbook on `frontend-design` (`reference.md`)
+- Commands `/ui-visual-system`, `/ui-decision-flow`, `/ui-surface-fit`
+- `preset-ui` 0.2.0 includes the three new craft lenses
+- `preset-release` 0.2.0: `/bump-version`, `package-updater`, `version-bump` rule, and `scripts/bump-version.sh` starter
+
+### Changed
+
+- `ui-ux-experience` 0.2.0: craft lenses + PASS/HOLD finish gate
+- `ui-critique` / `ui-polish` / `ui-clarify` 0.2.0
+- `project-context-contract` 0.2.0 starter craft checks
+- QA and orchestration packages pick up overlay-contrast / trust-cluster checks
+- `devkit-setup-review` → 0.1.3 (Release package group lists bump/updater)
+- Adapters copy `content/scripts/*` to `scripts/` only when missing
+
+## 0.4.0
+
+### Added
+
+- `preset-release`: changelog writer skill + companion agent + `/write-changelog`
+- Skills may ship an optional companion `agent.md` (same id as the skill)
+- Default notes folder is `changelogs/releases/`; `packages/changelogs/releases/` is used when that directory already exists
+
+### Changed
+
+- Interactive `init` default preset list includes `preset-release` (`--yes` still installs only Core + Code Review)
+- `devkit-setup-review` → 0.1.1 (Release package group)
+
 ## 0.3.0
 
 ### Added

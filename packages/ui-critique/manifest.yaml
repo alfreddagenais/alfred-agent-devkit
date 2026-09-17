@@ -1,6 +1,6 @@
 id: ui-critique
 name: UI Critique
-version: 0.1.0
+version: 0.2.0
 type: command
 status: published
 targets:
@@ -8,8 +8,9 @@ targets:
 tools:
   - cursor
 description: >
-  Critique hierarchy, clarity, and emotional resonance; score C.L.E.A.R.
+  Critique hierarchy, clarity, and product fit; score C.L.E.A.R.; return a
+  PASS/HOLD finish gate.
 tags: [ui, command]
-origin: howdyAl-VirtuoDJ/.cursor/commands/ui-critique.md
+origin: null
 publish:
   strip: [secrets, private-paths, experiments]

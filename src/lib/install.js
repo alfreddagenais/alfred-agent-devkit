@@ -86,6 +86,7 @@ export function applyInstall(ops, { dryRun = false } = {}) {
     }
     fs.mkdirSync(path.dirname(op.to), { recursive: true })
     fs.copyFileSync(op.from, op.to)
+    fs.chmodSync(op.to, fs.statSync(op.from).mode)
     written.push(op)
   }
 

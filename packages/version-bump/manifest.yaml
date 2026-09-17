@@ -1,0 +1,22 @@
+id: version-bump
+name: Version Bump Rule
+version: 0.1.0
+type: rule
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+description: >
+  Always-on policy for app SemVer: propose patch/minor after shippable
+  work, never auto-major, and sync every version source via bump-version.
+tags:
+  - version
+  - release
+  - rule
+origin: null
+publish:
+  strip:
+    - secrets
+    - private-paths
+    - experiments

@@ -1,0 +1,24 @@
+id: bump-version
+name: Bump Version
+version: 0.1.0
+type: skill
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+  - claude
+description: >
+  Bumps app SemVer (patch/minor/major/set) and keeps package.json, lock
+  metadata, composer.json, and host overlays aligned. Use with
+  /bump-version or ./scripts/bump-version.sh. Not for dependency updates.
+tags:
+  - version
+  - release
+  - semver
+origin: null
+publish:
+  strip:
+    - secrets
+    - private-paths
+    - experiments

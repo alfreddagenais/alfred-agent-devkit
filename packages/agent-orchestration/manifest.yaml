@@ -1,6 +1,6 @@
 id: agent-orchestration
 name: Agent Orchestration
-version: 0.1.0
+version: 0.1.1
 type: rule
 status: published
 targets:
@@ -13,7 +13,7 @@ description: >
 tags:
   - orchestration
   - agents
-origin: howdyAl-VirtuoDJ/.cursor/rules/agent-orchestration.mdc
+origin: null
 publish:
   strip:
     - secrets

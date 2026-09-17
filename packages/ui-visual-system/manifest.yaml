@@ -1,0 +1,16 @@
+id: ui-visual-system
+name: UI Visual System
+version: 0.1.0
+type: command
+status: published
+targets:
+  - agent-devkit
+tools:
+  - cursor
+description: >
+  Visual-system pass: overlay contrast, catalog media, grid, type, icons,
+  dividers. Use when reviewing or building UI chrome and imagery.
+tags: [ui, command, visual]
+origin: null
+publish:
+  strip: [secrets, private-paths, experiments]
